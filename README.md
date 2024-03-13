@@ -20,6 +20,6 @@ Le projet est divisé en deux parties principales : le frontend et le backend.
 1. Cloner le dépôt
 2. Installer les dépendances :
    - Backend : `cd backend && npm install`
-   - Frontend : cd frontend && npm install && npm run build:css.
+   - Frontend : `cd frontend && npm install && npm run build:css`
 3. Démarrer le serveur : `cd backend && npm start`
 4. Accéder à l'application : Ouvrir `http://localhost:3000/index.html` dans un navigateur.
