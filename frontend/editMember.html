@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier un Membre - Kickers Club de Quimper</title>
+    <link href="dist/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header></header>
+    <main class="container mx-auto mt-5">
+        <section>
+            <!-- Tableau des membres -->
+            <table id="membersTable" class="min-w-full divide-y divide-gray-200">
+                <!-- En-tête du tableau -->
+                <thead class="bg-gray-900 text-white">
+                    <tr>
+                        <!-- Colonnes du tableau -->
+                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Nom</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Âge</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Poste</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Email</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Est Membre</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <!-- Corps du tableau -->
+                <tbody class="bg-white divide-y divide-gray-200">
+                </tbody>
+            </table>
+
+            <!-- Modal pour modifier un membre -->
+            <div id="editMemberModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true" style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;">
+                <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    <!-- Contenu du modal -->
+                    <div class="modal-dialog" role="document" style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                        <div class="modal-content relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full" style="transition: transform 0.3s ease-out; margin: auto; opacity: 1;">
+                            <!-- En-tête du modal -->
+                            <div class="modal-header bg-gray-100 px-4 py-2 sm:px-6 sm:flex sm:flex-row-reverse">
+                                <h5 class="modal-title text-lg leading-6 font-medium text-gray-900" id="modal-title">Modifier un Membre</h5>
+                            </div>
+                            <!-- Corps du modal -->
+                            <div class="modal-body px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                <!-- Formulaire de modification -->
+                                <form id="editMemberForm" class="space-y-6">
+                                    <input type="hidden" id="memberId" name="memberId">
+                                    <!-- Champ Nom -->
+                                    <div class="form-group">
+                                        <label for="name" class="block text-sm font-medium text-gray-700">Nom :</label>
+                                        <input type="text" id="name" name="name" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                    
+                                    <!-- Champ Âge -->
+                                    <div class="form-group">
+                                        <label for="age" class="block text-sm font-medium text-gray-700">Âge :</label>
+                                        <input type="number" id="age" name="age" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                    
+                                    <!-- Champ Poste -->
+                                    <div class="form-group">
+                                        <label for="position" class="block text-sm font-medium text-gray-700">Poste :</label>
+                                        <select id="position" name="position" required class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <option value="Gardien">Gardien</option>
+                                            <option value="Défenseur">Défenseur</option>
+                                            <option value="Milieu de terrain">Milieu de terrain</option>
+                                            <option value="Attaquant">Attaquant</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <!-- Champ Email -->
+                                    <div class="form-group">
+                                        <label for="email" class="block text-sm font-medium text-gray-700">Email :</label>
+                                        <input type="email" id="email" name="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                    
+                                    <!-- Champ Est Membre -->
+                                    <div class="form-group flex items-center">
+                                        <input type="checkbox" id="isMember" name="isMember" class="form-check-input h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                                        <label for="isMember" class="form-check-label ml-2 block text-sm text-gray-900">Est Membre</label>
+                                    </div>
+                            </div>
+                            <!-- Pied de page du modal -->
+                            <div class="modal-footer bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                <!-- Boutons d'action -->
+                                <button type="submit" class="btn btn-primary w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm">Modifier un Membre</button>
+                                <button type="button" class="btn btn-secondary mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-danger mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" id="deleteMemberButton">Supprimer</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+    <script src="apiServices.js"></script>
+    <script src="domUtils.js"></script>
+    <script src="eventHandlers.js"></script>
+    <script src="main.js"></script>
+    <script src="common.js"></script>
+</body>
+</html>
