@@ -1,8 +1,8 @@
-# Documentation du Projet Kickers Club de Quimper
+# Documentation du Projet Kickers Club de Quimper (KCDQ)
 
 ## Introduction
 
-Ce projet consiste en une application web pour le Kickers Club de Quimper. Elle permet de gérer les membres du club, notamment en ajoutant, visualisant, modifiant et supprimant des membres.
+Ce projet consiste en une application web pour le Kickers Club de Quimper (KCDQ). Elle permet de gérer les membres du club, notamment en ajoutant, visualisant, modifiant et supprimant des membres.
 
 ## Structure du Projet
 
