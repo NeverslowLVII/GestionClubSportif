@@ -4,39 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un Membre - Kickers Club de Quimper</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="dist/styles.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-100">
     <header></header>
-    <main>
+    <main class="container mx-auto mt-5">
         <section>
-            <form id="addMemberForm">
-                <label for="name">Nom :</label>
-                <input type="text" id="name" name="name" required>
+            <!-- Formulaire d'ajout de membre -->
+            <form id="addMemberForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <!-- Champ pour le nom -->
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nom :</label>
+                    <input type="text" id="name" name="name" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
                 
-                <label for="age">Âge :</label>
-                <input type="number" id="age" name="age" required>
+                <!-- Champ pour l'âge avec validation et affichage d'erreur -->
+                <div class="mb-4">
+                    <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Âge :</label>
+                    <input type="number" id="age" name="age" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <!-- Élément pour afficher les erreurs d'âge -->
+                    <p id="age-error" class="text-red-500 text-xs italic"></p>
+                </div>
                 
-                <label for="position">Poste :</label>
-                <select id="position" name="position" required>
-                    <option value="Goalkeeper">Gardien</option>
-                    <option value="Defender">Défenseur</option>
-                    <option value="Midfielder">Milieu de terrain</option>
-                    <option value="Forward">Attaquant</option>
-                </select>
+                <!-- Sélection du poste -->
+                <div class="mb-4">
+                    <label for="position" class="block text-gray-700 text-sm font-bold mb-2">Poste :</label>
+                    <select id="position" name="position" required class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="Gardien">Gardien</option>
+                        <option value="Défenseur">Défenseur</option>
+                        <option value="Milieu de terrain">Milieu de terrain</option>
+                        <option value="Attaquant">Attaquant</option>
+                    </select>
+                </div>
                 
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email">
+                <!-- Champ pour l'email -->
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email :</label>
+                    <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
                 
-                <label for="isMember">Est Membre :</label>
-                <input type="checkbox" id="isMember" name="isMember" checked>
+                <!-- Case à cocher pour le statut de membre -->
+                <div class="mb-4 flex items-center">
+                    <input type="checkbox" id="isMember" name="isMember" checked class="form-checkbox h-5 w-5 text-gray-600"><label for="isMember" class="ml-2 block text-gray-700 text-sm font-bold">Est Membre</label>
+                </div>
                 
-                <button type="submit">Ajouter un Membre</button>
+                <!-- Bouton de soumission du formulaire -->
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Ajouter un Membre</button>
             </form>
         </section>
     </main>
     <footer></footer>
-    <script src="script.js"></script>
     <script src="common.js"></script>
+    <script src="apiServices.js"></script>
+    <script src="domUtils.js"></script>
+    <script src="eventHandlers.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
